@@ -3,7 +3,7 @@ chrome.browserAction.onClicked.addListener( function(tab) {
 
 	// The regular expressions we want to match our URLs against
 	var matchEvent = /http:\/\/(?:www\.)?(houstoniamag|seattlemet|portlandmonthlymag)\.com\/events\/([a-z0-9-]+)/g;
-	var matchArticle = /^http:\/\/(?:www\.)?(seattlemet|houstoniamag|portlandmonthlymag)\.com\/[a-z0-9-\/]+\/articles\/([a-z0-9-]+)/g;
+	var matchArticle = /^http:\/\/(?:www\.)?(seattlemet|houstoniamag|portlandmonthlymag)\.com(\/[a-z0-9-\/]+)?\/articles\/([a-z0-9-]+)/g;
 	var matchBusiness = /http:\/\/(?:www\.)?(houstoniamag|seattlemet|portlandmonthlymag)\.com\/(businesses|restaurants|bars|stores)\/([a-z0-9-]+)/g;
 	var matchSlideshow = /http:\/\/(?:www\.)?(houstoniamag|seattlemet|portlandmonthlymag)\.com\/slideshows\/([a-z0-9-]+)/g;
 	var matchTags = /http:\/\/(?:www\.)?(houstoniamag|seattlemet|portlandmonthlymag)\.com\/tags\/([a-z0-9-]+)/g;
@@ -21,7 +21,7 @@ chrome.browserAction.onClicked.addListener( function(tab) {
 	if( resultEvent )
 		loc = 'http://www.' + resultEvent[1] + '.com/admin/calendar_events/' + resultEvent[2] + '/edit';		
 	else if( resultArticle )	
-		loc = 'http://www.' + resultArticle[1] + '.com/admin/articles/' + resultArticle[2] + '/edit';		
+		loc = 'http://www.' + resultArticle[1] + '.com/admin/articles/' + resultArticle[3] + '/edit';		
 	else if( resultBusiness )	
 		loc = 'http://www.' + resultBusiness[1] + '.com/admin/businesses/' + resultBusiness[3] + '/edit';		
 	else if( resultSlideshow )	
