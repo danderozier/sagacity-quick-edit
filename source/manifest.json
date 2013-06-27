@@ -12,5 +12,8 @@
   },
   "manifest_version": 2,
   "options_page": "options.html",
-  "update_url": "http://sagacitymedia.com/extensions/updates.xml"
+  "update_url": "http://sagacitymedia.com/extensions/updates.xml",
+  "icons": {"16": "icon16.png",
+            "48": "icon48.png",
+            "128": "icon128.png" }
 }
