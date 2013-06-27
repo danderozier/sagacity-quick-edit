@@ -11,5 +11,6 @@
     "default_icon": "icon.png"
   },
   "manifest_version": 2,
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "update_url": "http://sagacitymedia.com/extensions/updates.xml"
 }
