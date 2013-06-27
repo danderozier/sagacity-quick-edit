@@ -9,6 +9,8 @@ chrome.browserAction.onClicked.addListener( function(tab) {
 	var matchTags = /http:\/\/(?:www\.)?(houstoniamag|seattlemet|portlandmonthlymag)\.com\/tags\/([a-z0-9-]+)/g;
 	
 	var matchReverseArticle = /^http:\/\/(?:www\.)?(seattlemet|houstoniamag|portlandmonthlymag)\.com\/admin\/articles\/([a-z0-9-]+)\/edit/g;
+	var matchReverseEvent = /^http:\/\/(?:www\.)?(seattlemet|houstoniamag|portlandmonthlymag)\.com\/admin\/calendar_events\/([a-z0-9-]+)\/edit/g;;
+  var matchReverseSlideshow = /^http:\/\/(?:www\.)?(seattlemet|houstoniamag|portlandmonthlymag)\.com\/admin\/slideshows\/([a-z0-9-]+)\/edit/g;;
 	
 	// Run the regexes and store matches
 	var resultEvent = matchEvent.exec(tab.url);	
@@ -18,12 +20,18 @@ chrome.browserAction.onClicked.addListener( function(tab) {
 	var resultTags = matchTags.exec(tab.url);
 
 	var resultReverseArticle = matchReverseArticle.exec(tab.url);
+	var resultReverseEvent = matchReverseEvent.exec(tab.url);
+  var resultReverseSlideshow = matchReverseSlideshow.exec(tab.url);
 	
 	var loc = '';
 		
 	// If we have matches, take the visitor to the edit page for that match type.
 	if( resultReverseArticle )
 	  loc = 'http://www.' + resultReverseArticle[1] + '.com/articles/' + resultReverseArticle[2];
+	else if( resultReverseEvent )
+	  loc = 'http://www.' + resultReverseEvent[1] + '.com/events/' + resultReverseEvent[2];
+	else if( resultReverseSlideshow)
+	  loc = 'http://www.' + resultReverseSlideshow[1] + '.com/slideshows/' + resultReverseSlideshow[2];
 	else if( resultEvent )
 		loc = 'http://www.' + resultEvent[1] + '.com/admin/calendar_events/' + resultEvent[2] + '/edit';		
 	else if( resultArticle )	
